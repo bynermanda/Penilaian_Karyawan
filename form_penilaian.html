@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Penilaian - PT Indosafety Sentosa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">PT Indosafety Sentosa</a>
+        <div class="collapse navbar-collapse justify-content-center">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link active fw-bold" href="form_penilaian.html">Form Penilaian</a></li>
+                <li class="nav-item"><a class="nav-link" href="rekap_bulanan.html">Penilaian Bulanan</a></li>
+            </ul>
+        </div>
+        <a href="logout.php" class="btn btn-light btn-sm text-danger fw-bold">LOGOUT</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white d-flex justify-content-between">
+            <h5 class="mb-0">Input Penilaian Staff: <span id="namaKaryawan">Pilih Staff</span></h5>
+        </div>
+        <div class="card-body">
+            <form id="formInputNilai">
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Pilih Nama Staff:</label>
+                    <select class="form-select form-select-lg" id="selectKaryawan" required>
+                        <option value="">-- Pilih Karyawan --</option>
+                    </select>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle table-hover w-100 shadow-sm" style="font-size: 1.1rem;">
+    <thead class="table-dark text-center">
+        <tr style="height: 60px;"> <th style="width: 20%;">Item Penilaian</th>
+            <th style="width: 10%;">Bobot</th>
+            <th style="width: 45%;">Deskripsi (Kriteria)</th>
+            <th style="width: 5%;">Grade (A/B/C/D)</th>
+            <th style="width: 10%;">Hasil</th>
+        </tr>
+    </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Performa Kehadiran</td>
+                                <td class="text-center">5%</td>
+                                <td id="desc_item1" class="small">Memuat deskripsi...</td> 
+                                <td>
+                                    <select class="form-select hitung" data-bobot="0.05" id="val1">
+                                        <option value="0">D (0)</option>
+                                        <option value="60">C (60)</option>
+                                        <option value="80">B (80)</option>
+                                        <option value="100">A (100)</option>
+                                    </select>
+                                </td>
+                                <td class="text-center fw-bold" id="res1">0</td>
+                            </tr>
+                            <tr>
+                                <td>2. Performa Terlambat</td>
+                                <td class="text-center">5%</td>
+                                <td id="desc_item2" class="small">Memuat deskripsi...</td>
+                                <td><select class="form-select hitung" data-bobot="0.05" id="val2">
+                                    <option value="0">D</option><option value="60">C</option><option value="80">B</option><option value="100">A</option>
+                                </select></td>
+                                <td class="text-center fw-bold" id="res2">0</td>
+                            </tr>
+                            <tr>
+                                <td>3. Kualitas Kerja</td>
+                                <td class="text-center">30%</td>
+                                <td id="desc_item3" class="small">Memuat deskripsi...</td>
+                                <td><select class="form-select hitung" data-bobot="0.30" id="val3">
+                                    <option value="0">D</option><option value="60">C</option><option value="80">B</option><option value="100">A</option>
+                                </select></td>
+                                <td class="text-center fw-bold" id="res3">0</td>
+                            </tr>
+                            <tr>
+                                <td>4. Efisiensi Kerja</td>
+                                <td class="text-center">20%</td>
+                                <td id="desc_item4" class="small">Memuat deskripsi...</td>
+                                <td><select class="form-select hitung" data-bobot="0.20" id="val4">
+                                    <option value="0">D</option><option value="60">C</option><option value="80">B</option><option value="100">A</option>
+                                </select></td>
+                                <td class="text-center fw-bold" id="res4">0</td>
+                            </tr>
+                            <tr>
+                                <td>5. Sikap Kerja</td>
+                                <td class="text-center">20%</td>
+                                <td id="desc_item5" class="small">Memuat deskripsi...</td>
+                                <td><select class="form-select hitung" data-bobot="0.20" id="val5">
+                                    <option value="0">D</option><option value="60">C</option><option value="80">B</option><option value="100">A</option>
+                                </select></td>
+                                <td class="text-center fw-bold" id="res5">0</td>
+                            </tr>
+                            <tr>
+                                <td>6. Kepatuhan Keselamatan</td>
+                                <td class="text-center">20%</td>
+                                <td id="desc_item6" class="small">Memuat deskripsi...</td>
+                                <td><select class="form-select hitung" data-bobot="0.20" id="val6">
+                                    <option value="0">D</option><option value="60">C</option><option value="80">B</option><option value="100">A</option>
+                                </select></td>
+                                <td class="text-center fw-bold" id="res6">0</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="table-dark">
+                            <tr>
+                                <th colspan="3" class="text-end">TOTAL HASIL AKHIR:</th>
+                                <th class="text-center" id="totalAkhir" style="font-size: 1.5rem;">0</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <button type="submit" class="btn btn-success w-100 py-3 fw-bold">SIMPAN PENILAIAN</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+// Ambil deskripsi berdasarkan departemen user
+fetch('get_deskripsi.php')
+    .then(res => res.json())
+    .then(res => {
+    // Di dalam fetch deskripsi
+    const formattedText = res.data.desc1.replace(/\n/g, "<br>");
+        if(res.status === 'success') {
+            $('#desc_item1').html(formattedText);
+            $('#desc_item2').html(res.data.desc2.replace(/\n/g, "<br>"));
+            $('#desc_item3').html(res.data.desc3.replace(/\n/g, "<br>"));
+            $('#desc_item4').html(res.data.desc4.replace(/\n/g, "<br>"));
+            $('#desc_item5').html(res.data.desc5.replace(/\n/g, "<br>"));
+            $('#desc_item6').html(res.data.desc6.replace(/\n/g, "<br>"));
+        } else {
+            $('.small').text("Gunakan standar penilaian umum departemen.");
+        }
+    });
+    // 1. Ambil data staff untuk dropdown
+    // Pastikan nama file ini sama persis dengan yang ada di folder htdocs Anda
+    fetch('get_karyawan_perbagian.php') 
+        .then(res => res.json())
+        .then(res => {
+        if(res.status === 'success') {
+            $('#labelBagian').text(res.info.bagian_penilai);
+            const select = $('#selectKaryawan');
+            select.empty().append('<option value="">-- Pilih Karyawan --</option>');
+
+            res.data.forEach(k => {
+                if (k.id_penilaian) {
+                    // Jika sudah dinilai: Tambah tanda check dan disable
+                    select.append(`<option value="${k.id_karyawan}" disabled style="color: green;">
+                        ✔ ${k.nama} (Sudah Dinilai)
+                    </option>`);
+                } else {
+                    // Jika belum dinilai
+                    select.append(`<option value="${k.id_karyawan}">
+                        ${k.nama} (${k.id_karyawan})
+                    </option>`);
+                }
+            });
+        }
+    })
+        .catch(err => console.error("Error Fetching Staff:", err));
+
+    // 2. Logika Hitung Otomatis (Real-time)
+    $('.hitung').on('change', function() {
+        let totalFinal = 0;
+        for(let i=1; i<=6; i++) {
+            let nilai = parseFloat($(`#val${i}`).val()) || 0;
+            let bobot = parseFloat($(`#val${i}`).data('bobot'));
+            let kontribusi = nilai * bobot;
+            $(`#res${i}`).text(kontribusi.toFixed(1));
+            totalFinal += kontribusi;
+        }
+        $('#totalAkhir').text(totalFinal.toFixed(1));
+    });
+
+    // 3. Proses Simpan Data via AJAX
+    $('#formInputNilai').on('submit', function(e) {
+        e.preventDefault();
+
+        // Ambil data dari form
+        const payload = {
+            id_karyawan: $('#selectKaryawan').val(),
+            val1: $('#val1').val(),
+            val2: $('#val2').val(),
+            val3: $('#val3').val(),
+            val4: $('#val4').val(),
+            val5: $('#val5').val(),
+            val6: $('#val6').val()
+        };
+
+        if (!payload.id_karyawan) {
+            alert("Harap pilih karyawan terlebih dahulu!");
+            return;
+        }
+
+        // Kirim ke backend simpan_nilai.php
+        $.ajax({
+            url: 'simpan_nilai.php',
+            type: 'POST',
+            data: payload,
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert("Sukses! " + response.message);
+                    window.location.href = 'index.html'; // Kembali ke dashboard
+                } else {
+                    alert("Gagal: " + response.message);
+                }
+            },
+            error: function(xhr) {
+                console.error(xhr.responseText);
+                alert("Terjadi kesalahan sistem saat menyimpan data.");
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

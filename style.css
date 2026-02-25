@@ -1,0 +1,28 @@
+:root {
+    --primary: 	#FFFFFF
+    --bg: #0000FF
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--primary);
+}
+
+/*style*/
+    .navbar navbar-expand-lg navbar-dark bg-dark shadow-sm {
+        background-color: #857800 !important; /* Contoh warna Biru Navy */
+    }
+    .nav-link:hover {
+        color: #ffc107 !important; /* Warna kuning saat di-hover */
+    }
